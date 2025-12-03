@@ -3,7 +3,7 @@
 ========================================================= */
 
 :root {
-  /* БРЕНДОВАЯ ПАЛИТРА (ЦВЕТА НЕ МЕНЯЮ) */
+  /* БРЕНДОВАЯ ПАЛИТРА (ЦВЕТА НЕ ТРОГАЮ) */
   --burgundy: #662046;      /* Qatar burgundy */
   --violet-deep: #28036a;   /* тёмно-фиолетовый */
   --grey-light: #818A8F;    /* светло-серый */
@@ -60,19 +60,42 @@ body {
   font-family: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--cream);
   color: var(--grey-dark);
-  line-height: 1.7;
+  font-size: 16.5px;
+  line-height: 1.8;
   font-weight: 500;
+  letter-spacing: 0.01em;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Базовая типографика */
+
+p,
+li {
+  font-size: 1rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  opacity: 0.97;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: "IBM Plex Serif", serif;
+  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  line-height: 1.15;
+}
+
+h2,
+h3,
+h4 {
+  line-height: 1.25;
 }
 
 img,
@@ -93,21 +116,6 @@ button {
   cursor: pointer;
 }
 
-/* Унифицированный контейнер */
-
-.container {
-  width: min(var(--container-max), 100% - var(--container-padding-desktop));
-  margin-inline: auto;
-}
-
-/* Мобильный контейнер чуть шире */
-
-@media (max-width: 768px) {
-  .container {
-    width: min(100% - var(--container-padding-tablet), 100%);
-  }
-}
-
 /* Фокус только по клавиатуре */
 
 :where(a, button, input, textarea) {
@@ -117,6 +125,28 @@ button {
 :where(a, button, input, textarea):focus-visible {
   outline: 2px solid var(--cream);
   outline-offset: 2px;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-desktop);
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding-inline: var(--container-padding-tablet);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-inline: var(--container-padding-mobile);
+  }
 }
 
 /* =========================================================
@@ -145,6 +175,7 @@ button {
   top: 8%;
   left: 4%;
 }
+
 .bg-square.s2 {
   width: 260px;
   height: 260px;
@@ -152,6 +183,7 @@ button {
   right: 3%;
   animation-delay: 6s;
 }
+
 .bg-square.s3 {
   width: 180px;
   height: 180px;
@@ -178,7 +210,7 @@ button {
   inset-inline: 0;
   top: 0;
   z-index: 1000;
-  padding: 12px 0;
+  padding-block: 12px;
   background: rgba(247, 242, 235, 0.96);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -190,11 +222,11 @@ button {
 }
 
 .site-header .container {
-  width: min(var(--container-max), 100% - 24px);
+  max-width: var(--container-max);
 }
 
 .site-header.scrolled {
-  padding: 6px 0;
+  padding-block: 6px;
   background: rgba(247, 242, 235, 0.98);
   box-shadow: var(--shadow-header);
 }
@@ -208,12 +240,12 @@ button {
 /* ЛОГО-ПЛАШКА */
 
 .logo-badge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 56px;
   padding-inline: 16px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--white);
   box-shadow: var(--shadow-small);
   flex-shrink: 0;
@@ -222,7 +254,6 @@ button {
 .logo-icon {
   display: block;
 }
-
 
 /* ФИРМЕННАЯ ПЛАШКА С МЕНЮ */
 
@@ -256,10 +287,11 @@ button {
 
 .nav-link {
   position: relative;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: #ffffff;
+  letter-spacing: 0.08em; /* меньше маркетинга */
+  font-weight: 600;
+  color: var(--white);
   opacity: 0.9;
   padding-bottom: 2px;
   white-space: nowrap;
@@ -276,7 +308,7 @@ button {
   width: 0;
   height: 2px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   transition: width var(--transition-fast);
 }
 
@@ -319,8 +351,8 @@ button {
   align-items: center;
   font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: #ffffff;
+  letter-spacing: 0.08em;
+  color: var(--white);
 }
 
 .lang-current {
@@ -330,7 +362,7 @@ button {
   padding: 4px 10px;
   border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
+  color: var(--white);
   opacity: 0.9;
   transition:
     background var(--transition-fast),
@@ -373,11 +405,11 @@ button {
   padding: 6px 10px;
   border-radius: 12px;
   font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--grey-dark);
   background: transparent;
-  opacity: 0.8;
+  opacity: 0.85;
   transition:
     background var(--transition-fast),
     opacity var(--transition-fast),
@@ -398,6 +430,7 @@ button {
 }
 
 /* Открытие меню по hover/focus (без JS) */
+
 .lang-switcher:hover .lang-menu,
 .lang-switcher:focus-within .lang-menu {
   display: flex;
@@ -432,7 +465,7 @@ button {
   width: 18px;
   height: 2px;
   border-radius: var(--radius-pill);
-  background: #ffffff;
+  background: var(--white);
   position: relative;
   transition: background var(--transition-fast);
 }
@@ -456,6 +489,7 @@ button {
 .burger-line::before {
   top: -6px;
 }
+
 .burger-line::after {
   bottom: -6px;
 }
@@ -506,12 +540,13 @@ button {
 
 .nav-mobile-link {
   display: block;
-  padding: 14px 0;
+  padding-block: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   font-size: 0.9rem;
-  color: #ffffff;
+  font-weight: 600;
+  color: var(--white);
 }
 
 /* =========================================================
@@ -527,7 +562,7 @@ button {
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.12);
   background: var(--burgundy);
-  color: #ffffff;
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -558,7 +593,7 @@ button {
 ========================================================= */
 
 main {
-  margin-top: 88px;
+  margin-top: var(--header-height);
   position: relative;
   z-index: 1;
 }
@@ -569,7 +604,7 @@ main {
 
 .band-hero {
   background: radial-gradient(circle at top left, var(--burgundy), var(--violet-deep));
-  color: #ffffff;
+  color: var(--white);
   position: relative;
   overflow: hidden;
 }
@@ -577,31 +612,31 @@ main {
 .band-light {
   background: var(--cream);
   color: var(--grey-dark);
-  padding: 70px 0;
+  padding-block: 70px;
 }
 
 .band-beige {
-  background: #e3d4c5;
+  background: var(--beige);
   color: var(--grey-dark);
-  padding: 70px 0;
+  padding-block: 70px;
 }
 
 .band-dark {
   background: var(--burgundy);
-  color: #ffffff;
-  padding: 80px 0;
+  color: var(--white);
+  padding-block: 80px;
 }
 
 .band-deep {
   background: var(--violet-deep);
-  color: #ffffff;
-  padding: 80px 0;
+  color: var(--white);
+  padding-block: 80px;
 }
 
 .band-slate {
   background: var(--grey-dark);
-  color: #ffffff;
-  padding: 80px 0;
+  color: var(--white);
+  padding-block: 80px;
 }
 
 .section-heading {
@@ -611,15 +646,17 @@ main {
 
 .section-heading h2 {
   font-size: clamp(2rem, 3vw, 2.6rem);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--burgundy);
+  font-weight: 700;
 }
 
 .section-heading p {
-  font-size: 0.98rem;
-  opacity: 0.84;
+  font-size: 1rem;
+  opacity: 0.9;
   max-width: 720px;
-  margin: 0 auto;
+  margin-inline: auto;
+  line-height: 1.9;
 }
 
 .band-dark .section-heading h2,
@@ -639,7 +676,7 @@ main {
 }
 
 .hero-content {
-  padding: 80px 0;
+  padding-block: 80px;
   display: flex;
   align-items: center;
 }
@@ -649,9 +686,9 @@ main {
 }
 
 .hero-kicker {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.1em;
   margin-bottom: 14px;
   color: var(--cream);
   opacity: 0.9;
@@ -659,19 +696,20 @@ main {
 
 .hero-title {
   font-size: clamp(2.6rem, 4.4vw, 3.8rem);
-  line-height: 1.1;
-  margin-bottom: 18px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: 0;
 }
 
 .hero-subtitle {
   font-size: 1.05rem;
-  opacity: 0.92;
-  margin-bottom: 26px;
+  opacity: 0.94;
+  margin-bottom: 24px;
 }
 
 .hero-meta {
-  font-size: 0.95rem;
-  opacity: 0.8;
+  font-size: 0.98rem;
+  opacity: 0.88;
   margin-bottom: 26px;
 }
 
@@ -688,12 +726,12 @@ main {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 28px;
+  padding: 13px 26px;
   border-radius: var(--radius-pill);
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   cursor: pointer;
   border: 1px solid transparent;
   transition:
@@ -705,7 +743,7 @@ main {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--burgundy), var(--violet-deep));
-  color: #ffffff;
+  color: var(--white);
   box-shadow: 0 18px 36px rgba(0, 0, 0, 0.5);
 }
 
@@ -716,7 +754,7 @@ main {
 
 .btn-outline {
   background: transparent;
-  border-color: rgba(247, 242, 235, 0.7);
+  border-color: rgba(247, 242, 235, 0.8);
   color: var(--cream);
 }
 
@@ -728,8 +766,8 @@ main {
 }
 
 .hero-note {
-  font-size: 0.86rem;
-  opacity: 0.7;
+  font-size: 0.88rem;
+  opacity: 0.8;
 }
 
 .hero-media {
@@ -750,21 +788,21 @@ main {
 
 .hero-card {
   position: absolute;
+  inset-inline: 40px;
   bottom: 40px;
-  left: 40px;
-  right: 40px;
   padding: 18px 20px;
   border-radius: var(--radius-md);
   background: rgba(247, 242, 235, 0.9);
   color: var(--grey-dark);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
   box-shadow: var(--shadow-soft);
 }
 
 .hero-card strong {
   display: block;
   margin-bottom: 4px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 /* =========================================================
@@ -773,8 +811,9 @@ main {
 
 .about-short {
   max-width: 860px;
-  margin: 0 auto;
-  font-size: 1rem;
+  margin-inline: auto;
+  font-size: 1.02rem;
+  line-height: 1.95;
 }
 
 /* =========================================================
@@ -806,8 +845,8 @@ main {
 }
 
 .stat-label {
-  font-size: 0.95rem;
-  opacity: 0.8;
+  font-size: 0.96rem;
+  opacity: 0.88;
 }
 
 /* =========================================================
@@ -820,10 +859,10 @@ main {
 }
 
 .seen-label {
-  font-size: 0.8rem;
-  letter-spacing: 0.16em;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.75;
   margin-bottom: 16px;
 }
 
@@ -838,8 +877,8 @@ main {
   min-width: 120px;
   padding: 10px 18px;
   border-radius: var(--radius-pill);
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   background: var(--grey-dark);
   color: var(--cream);
@@ -872,7 +911,7 @@ main {
   background: var(--white);
   color: var(--grey-dark);
   border-radius: var(--radius-md);
-  padding: 22px 22px 20px;
+  padding: 22px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
   transition:
@@ -886,7 +925,7 @@ main {
 .band-deep .card,
 .band-slate .card {
   background: rgba(5, 5, 7, 0.92);
-  color: #ffffff;
+  color: var(--white);
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow-soft);
 }
@@ -901,6 +940,7 @@ main {
   font-size: 1.25rem;
   margin-bottom: 8px;
   color: var(--burgundy);
+  font-weight: 600;
 }
 
 .band-dark .card h3,
@@ -910,8 +950,9 @@ main {
 }
 
 .card p {
-  font-size: 0.95rem;
-  opacity: 0.92;
+  font-size: 0.96rem;
+  opacity: 0.96;
+  line-height: 1.9;
   margin-bottom: 12px;
 }
 
@@ -921,6 +962,7 @@ main {
   gap: 6px;
   font-size: 0.9rem;
   color: var(--burgundy);
+  font-weight: 500;
 }
 
 .band-dark .card a,
@@ -970,20 +1012,22 @@ main {
   border-radius: var(--radius-pill);
   background: rgba(5, 5, 7, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.35);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
 }
 
 .founder-text p {
-  font-size: 0.98rem;
-  opacity: 0.9;
+  font-size: 1.02rem;
+  line-height: 1.95;
+  opacity: 0.95;
 }
 
 .founder-text h3 {
   font-size: 1.6rem;
   margin-bottom: 10px;
   color: var(--burgundy);
+  font-weight: 700;
 }
 
 .band-deep .founder-text h3 {
@@ -1007,6 +1051,11 @@ main {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.testimonial-card p {
+  font-size: 0.98rem;
+  line-height: 1.9;
 }
 
 .testimonial-meta {
@@ -1035,7 +1084,7 @@ main {
 }
 
 .testimonial-location {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   opacity: 0.8;
 }
 
@@ -1101,16 +1150,18 @@ main {
   border-radius: 12px;
   border: 1px solid rgba(94, 106, 113, 0.35);
   font-family: inherit;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  font-weight: 500;
   outline: none;
-  background: #ffffff;
+  background: var(--white);
 }
 
 .card input[type="text"]::placeholder,
 .card input[type="email"]::placeholder,
 .card input[type="tel"]::placeholder,
 .card textarea::placeholder {
-  color: rgba(94, 106, 113, 0.8);
+  color: rgba(94, 106, 113, 0.82);
 }
 
 .card textarea {
@@ -1123,7 +1174,7 @@ main {
 
 .site-footer {
   background: var(--violet-deep);
-  color: #ffffff;
+  color: var(--white);
   padding: 60px 0 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   position: relative;
@@ -1140,7 +1191,7 @@ main {
 .footer-title {
   text-transform: uppercase;
   font-size: 0.9rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   margin-bottom: 10px;
   color: var(--cream);
 }
@@ -1152,8 +1203,8 @@ main {
 .footer-links li a {
   display: block;
   font-size: 0.9rem;
-  padding: 4px 0;
-  opacity: 0.8;
+  padding-block: 4px;
+  opacity: 0.85;
   transition:
     opacity var(--transition-fast),
     transform var(--transition-fast),
@@ -1163,7 +1214,7 @@ main {
 .footer-links li a:hover {
   opacity: 1;
   transform: translateX(3px);
-  color: #e3d4c5;
+  color: var(--beige);
 }
 
 .footer-socials {
@@ -1205,7 +1256,7 @@ main {
   border-radius: var(--radius-pill);
   border: 1px solid rgba(255, 255, 255, 0.22);
   background: rgba(5, 5, 7, 0.4);
-  color: #ffffff;
+  color: var(--white);
   font-size: 0.9rem;
   outline: none;
   margin-bottom: 8px;
@@ -1225,7 +1276,7 @@ main {
 .footer-bottom {
   text-align: center;
   font-size: 0.85rem;
-  opacity: 0.75;
+  opacity: 0.78;
   margin-top: 10px;
 }
 
@@ -1238,7 +1289,7 @@ main {
 }
 
 .swiper-pagination-bullet {
-  background: #e3d4c5;
+  background: var(--beige);
   opacity: 0.45;
 }
 
@@ -1266,7 +1317,7 @@ main {
   }
 
   main {
-    margin-top: 82px;
+    margin-top: var(--header-height-scrolled);
   }
 
   .hero-layout {
@@ -1280,7 +1331,7 @@ main {
   }
 
   .logo-badge {
-    padding: 4px 16px;
+    padding-inline: 16px;
   }
 
   .header-main {
@@ -1310,7 +1361,7 @@ main {
   .band-dark,
   .band-deep,
   .band-slate {
-    padding: 50px 0;
+    padding-block: 50px;
   }
 
   .founder-layout {
@@ -1322,7 +1373,7 @@ main {
   }
 
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1338,4 +1389,40 @@ main {
   .stats-row {
     gap: 24px;
   }
+}
+/* =========================================================
+   STATS EMOJI ICONS (20 / 30 / 1000)
+========================================================= */
+
+.stats-row .stat-item .stat-number {
+  position: relative;
+  display: inline-block;
+  padding-top: 2.1rem; /* место под иконку сверху */
+}
+
+/* Базовый стиль иконки */
+.stats-row .stat-item .stat-number::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  line-height: 1;
+  opacity: 0.9;                 /* не кричит, но видно */
+}
+
+/* 1 — 20 years of experience */
+.stats-row .stat-item:nth-child(1) .stat-number::before {
+  content: "⚖️";                /* ассоциация с правом / justice */
+}
+
+/* 2 — 30 countries */
+.stats-row .stat-item:nth-child(2) .stat-number::before {
+  content: "🌍";                /* глобальность / страны */
+}
+
+/* 3 — 1000 families */
+.stats-row .stat-item:nth-child(3) .stat-number::before {
+  content: "👨‍👩‍👧‍👦";        /* семьи, но всё ещё достаточно «живое» */
 }
