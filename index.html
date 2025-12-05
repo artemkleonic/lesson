@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
 
-  <body style="font-family: 'IBM Plex Sans', system-ui, sans-serif">
+  <body>
     <!-- Decorative squares -->
     <div class="bg-squares" aria-hidden="true">
       <div class="bg-square s1"></div>
@@ -56,70 +56,63 @@
 
     <!-- ================= HEADER ================= -->
     <header class="site-header" id="site-header">
-      <div class="container header-inner">
-<!-- Logo -->
-<a href="#top" class="logo-badge" aria-label="REPRONOVA — Home">
-  <svg
-    class="logo-icon"
-    width="44"
-    height="44"
-    viewBox="0 0 64 64"
-    role="img"
-    aria-labelledby="repronova-logo-icon-title"
-  >
-    <title id="repronova-logo-icon-title">REPRONOVA logo</title>
+      <div class="container">
+        <div class="header-inner">
+          <!-- ЛОГО -->
+          <a href="#top" class="logo-badge">
+            <img src="img/logo.png" alt="REPRONOVA logo" class="logo-icon" />
+          </a>
 
-    <rect x="0" y="0" width="64" height="64" fill="#ffffff" rx="16" />
-    <circle cx="32" cy="32" r="20" fill="#662046" />
-    <circle cx="25" cy="23" r="3" fill="#f7f2eb" />
-    <path
-      d="M 19 38
-         A 16 16 0 0 0 45 38"
-      fill="none"
-      stroke="#f7f2eb"
-      stroke-width="2.5"
-      stroke-linecap="round"
-    />
-  </svg>
-</a>
+          <!-- МЕНЮ + КОНТРОЛЫ -->
+          <div class="header-main">
+            <!-- DESKTOP NAV -->
+            <nav class="nav-desktop" aria-label="Main menu">
+              <ul class="nav-list">
+                <li>
+                  <a class="nav-link" data-i18n="nav.about" href="#about">About Us</a>
+                </li>
+                <li>
+                  <a class="nav-link" data-i18n="nav.services" href="#services">Services</a>
+                </li>
+                <li>
+                  <a class="nav-link" data-i18n="nav.parents" href="#parents">Intended Parents</a>
+                </li>
+                <li>
+                  <a class="nav-link" data-i18n="nav.agencies" href="#agencies">Agencies &amp; Clinics</a>
+                </li>
+                <li>
+                  <a class="nav-link" data-i18n="nav.surrogates" href="#surrogates">Surrogates &amp; Donors</a>
+                </li>
+                <li>
+                  <a class="nav-link" data-i18n="nav.news" href="#news">News &amp; Events</a>
+                </li>
+                <li>
+                  <a class="nav-link" data-i18n="nav.resources" href="#resources">Resources</a>
+                </li>
+                <li>
+                  <a class="nav-link nav-link--primary" data-i18n="nav.contacts" href="#contacts">
+                    Contacts
+                  </a>
+                </li>
+              </ul>
+            </nav>
 
-
-
-
-        <div class="header-main">
-          <!-- DESKTOP NAV -->
-          <nav class="nav-desktop" aria-label="Main menu">
-            <ul class="nav-list">
-              <li><a class="nav-link" data-i18n="nav.about" href="#about">About Us</a></li>
-              <li><a class="nav-link" data-i18n="nav.services" href="#services">Services</a></li>
-              <li><a class="nav-link" data-i18n="nav.parents" href="#parents">Intended Parents</a></li>
-              <li><a class="nav-link" data-i18n="nav.agencies" href="#agencies">Agencies & Clinics</a></li>
-              <li><a class="nav-link" data-i18n="nav.surrogates" href="#surrogates">Surrogates & Donors</a></li>
-              <li><a class="nav-link" data-i18n="nav.news" href="#news">News & Events</a></li>
-              <li><a class="nav-link" data-i18n="nav.resources" href="#resources">Resources</a></li>
-              <li>
-                <a class="nav-link nav-link--primary" data-i18n="nav.contacts" href="#contacts">
-                  Contacts
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <!-- LANG + BURGER -->
-          <div class="header-controls">
-            <div class="lang-switcher" id="lang-switcher">
-              <button type="button" class="lang-current">EN</button>
-              <div class="lang-menu">
-                <button type="button" data-lang="en" class="active">EN — English</button>
-                <button type="button" data-lang="es">ES — Español</button>
-                <button type="button" data-lang="de">DE — Deutsch</button>
-                <button type="button" data-lang="ru">RU — Русский</button>
+            <!-- LANG + BURGER -->
+            <div class="header-controls">
+              <div class="lang-switcher" id="lang-switcher">
+                <button type="button" class="lang-current">EN</button>
+                <div class="lang-menu">
+                  <button type="button" data-lang="en" class="active">EN — English</button>
+                  <button type="button" data-lang="es">ES — Español</button>
+                  <button type="button" data-lang="de">DE — Deutsch</button>
+                  <button type="button" data-lang="ru">RU — Русский</button>
+                </div>
               </div>
-            </div>
 
-            <button class="burger" id="burger" type="button">
-              <span class="burger-line"></span>
-            </button>
+              <button class="burger" id="burger" type="button">
+                <span class="burger-line"></span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -131,9 +124,9 @@
         <li><a class="nav-mobile-link" data-i18n="nav.about" href="#about">About Us</a></li>
         <li><a class="nav-mobile-link" data-i18n="nav.services" href="#services">Services</a></li>
         <li><a class="nav-mobile-link" data-i18n="nav.parents" href="#parents">Intended Parents</a></li>
-        <li><a class="nav-mobile-link" data-i18n="nav.agencies" href="#agencies">Agencies & Clinics</a></li>
-        <li><a class="nav-mobile-link" data-i18n="nav.surrogates" href="#surrogates">Surrogates & Donors</a></li>
-        <li><a class="nav-mobile-link" data-i18n="nav.news" href="#news">News & Events</a></li>
+        <li><a class="nav-mobile-link" data-i18n="nav.agencies" href="#agencies">Agencies &amp; Clinics</a></li>
+        <li><a class="nav-mobile-link" data-i18n="nav.surrogates" href="#surrogates">Surrogates &amp; Donors</a></li>
+        <li><a class="nav-mobile-link" data-i18n="nav.news" href="#news">News &amp; Events</a></li>
         <li><a class="nav-mobile-link" data-i18n="nav.resources" href="#resources">Resources</a></li>
         <li><a class="nav-mobile-link" data-i18n="nav.contacts" href="#contacts">Contacts</a></li>
       </ul>
@@ -146,7 +139,8 @@
     <!-- ================= MAIN ================= -->
     <main id="top">
       <!-- HERO -->
-      <section class="band band-hero" id="hero">
+      <section class="band band-hero" id="hero"   style="background-image:url('/img/hero.png');background-size:cover;background-position:center;"
+>
         <div class="container hero-layout">
           <div class="hero-content">
             <div class="hero-inner" data-aos="fade-right">
@@ -165,31 +159,16 @@
                 20+ years of experience · 30+ countries · 1000+ successful cases
               </p>
               <div class="hero-cta">
-                <a
-                  href="#contacts"
-                  class="btn-primary"
-                  data-i18n="hero.ctaPrimary"
-                  >Book a consultation</a
-                >
-                <a
-                  href="#services"
-                  class="btn-outline"
-                  data-i18n="hero.ctaSecondary"
-                  >Learn more</a
-                >
+                <a href="#contacts" class="btn-primary" data-i18n="hero.ctaPrimary">
+                  Book a consultation
+                </a>
+                <a href="#services" class="btn-outline" data-i18n="hero.ctaSecondary">
+                  Learn more
+                </a>
               </div>
               <p class="hero-note" data-i18n="hero.note">
                 We are fully independent from clinics and act only in the interests of our
                 clients.
-              </p>
-            </div>
-          </div>
-          <div class="hero-media" aria-hidden="true">
-            <div class="hero-card">
-              <strong data-i18n="hero.cardTitle">Independent legal expertise</strong>
-              <p data-i18n="hero.cardText">
-                We help evaluate countries, clinics and programs before you start, minimise
-                risks and build the best strategy for your family.
               </p>
             </div>
           </div>
@@ -310,7 +289,7 @@
                 <article class="card">
                   <div
                     class="card-image"
-                    style="background-image: url('img/services/surrogacy.jpg')"
+                    style="background-image: url('./img/services/EKO-2.jpg')"
                   ></div>
                   <h3 data-i18n="services.surrogacy.title">Surrogacy programs</h3>
                   <p data-i18n="services.surrogacy.text">
@@ -328,7 +307,7 @@
                 <article class="card">
                   <div
                     class="card-image"
-                    style="background-image: url('img/services/donation.jpg')"
+                    style="background-image: url('./img/services/gamete-domenation.png')"
                   ></div>
                   <h3 data-i18n="services.donation.title">Gamete donation</h3>
                   <p data-i18n="services.donation.text">
@@ -346,7 +325,7 @@
                 <article class="card">
                   <div
                     class="card-image"
-                    style="background-image: url('img/services/legal-audit.jpg')"
+                    style="background-image: url('./img/services/legal-audit.jpg')"
                   ></div>
                   <h3 data-i18n="services.audit.title">Independent legal audit</h3>
                   <p data-i18n="services.audit.text">
@@ -405,8 +384,7 @@
               class="btn-outline"
               style="margin-top: 26px"
               data-i18n="why.button"
-              >Why Us?</a
-            >
+            >Why Us?</a>
           </div>
         </div>
       </section>
@@ -510,7 +488,7 @@
             <article class="card" data-aos="fade-up">
               <div
                 class="card-image"
-                style="background-image: url('img/news/greece-2025.jpg')"
+                style="background-image: url('./img/news/greece-2025.png')"
               ></div>
               <h3 data-i18n="news.1.title">
                 Greece 2025: new opportunities for same-sex couples
@@ -525,7 +503,7 @@
             <article class="card" data-aos="fade-up" data-aos-delay="80">
               <div
                 class="card-image"
-                style="background-image: url('img/news/mexico-ban.jpg')"
+                style="background-image: url('img/news/mexico-ban.png')"
               ></div>
               <h3 data-i18n="news.2.title">Mexico limits commercial surrogacy from 2026</h3>
               <p data-i18n="news.2.text">
@@ -537,7 +515,7 @@
             <article class="card" data-aos="fade-up" data-aos-delay="140">
               <div
                 class="card-image"
-                style="background-image: url('img/news/canada-case.jpg')"
+                style="background-image: url('img/news/canada-dual.png')"
               ></div>
               <h3 data-i18n="news.3.title">Canada: successful dual citizenship case</h3>
               <p data-i18n="news.3.text">
@@ -565,24 +543,24 @@
           </div>
 
           <div class="partner-grid" data-aos="fade-up">
-            <a class="partner" href="partners/clinics.html"
-              ><img src="img/partners/1.png" alt="Clinic partner 1"
-            /></a>
-            <a class="partner" href="partners/law-firms.html"
-              ><img src="img/partners/2.png" alt="Law firm partner"
-            /></a>
-            <a class="partner" href="partners/cryobanks.html"
-              ><img src="img/partners/3.png" alt="Cryobank partner"
-            /></a>
-            <a class="partner" href="partners/dna-labs.html"
-              ><img src="img/partners/4.png" alt="DNA lab partner"
-            /></a>
-            <a class="partner" href="partners/clinics.html"
-              ><img src="img/partners/5.png" alt="Clinic partner 2"
-            /></a>
-            <a class="partner" href="partners.html"
-              ><img src="img/partners/6.png" alt="REPRONOVA partner"
-            /></a>
+            <a class="partner" href="partners/clinics.html">
+              <img src="img/partners/1.png" alt="Clinic partner 1" />
+            </a>
+            <a class="partner" href="partners/law-firms.html">
+              <img src="img/partners/2.png" alt="Law firm partner" />
+            </a>
+            <a class="partner" href="partners/cryobanks.html">
+              <img src="img/partners/3.png" alt="Cryobank partner" />
+            </a>
+            <a class="partner" href="partners/dna-labs.html">
+              <img src="img/partners/4.png" alt="DNA lab partner" />
+            </a>
+            <a class="partner" href="partners/clinics.html">
+              <img src="img/partners/5.png" alt="Clinic partner 2" />
+            </a>
+            <a class="partner" href="partners.html">
+              <img src="img/partners/6.png" alt="REPRONOVA partner" />
+            </a>
           </div>
 
           <div class="partners-cta">
@@ -797,15 +775,13 @@
                 <a
                   href="services/legal-opinion.html"
                   data-i18n="footer.services.legalOpinions"
-                  >Legal opinions</a
-                >
+                >Legal opinions</a>
               </li>
               <li>
                 <a
                   href="services/independent-advisor.html"
                   data-i18n="footer.services.advisor"
-                  >Independent legal advisor</a
-                >
+                >Independent legal advisor</a>
               </li>
             </ul>
           </div>
@@ -817,15 +793,13 @@
                 <a
                   href="resources/legislation.html"
                   data-i18n="footer.resources.legislation"
-                  >Legislation</a
-                >
+                >Legislation</a>
               </li>
               <li>
                 <a
                   href="resources/publications.html"
                   data-i18n="footer.resources.publications"
-                  >Publications</a
-                >
+                >Publications</a>
               </li>
               <li>
                 <a href="resources/faq.html" data-i18n="footer.resources.faq">FAQ</a>
@@ -866,29 +840,25 @@
                 <a
                   href="partners/clinics.html"
                   data-i18n="footer.partners.clinics"
-                  >Clinics</a
-                >
+                >Clinics</a>
               </li>
               <li>
                 <a
                   href="partners/law-firms.html"
                   data-i18n="footer.partners.lawFirms"
-                  >Law firms</a
-                >
+                >Law firms</a>
               </li>
               <li>
                 <a
                   href="partners/cryobanks.html"
                   data-i18n="footer.partners.cryobanks"
-                  >Cryobanks</a
-                >
+                >Cryobanks</a>
               </li>
               <li>
                 <a
                   href="partners/dna-labs.html"
                   data-i18n="footer.partners.dnaLabs"
-                  >DNA labs</a
-                >
+                >DNA labs</a>
               </li>
             </ul>
           </div>
