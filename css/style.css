@@ -63,7 +63,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-img,
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 svg {
   display: block;
   max-width: 100%;
@@ -546,6 +551,13 @@ main {
   color: var(--white);
 }
 
+/* убираем любые фильтры, чтобы картинка не была в блюре */
+.band-hero,
+.band-hero::before {
+  filter: none;
+  backdrop-filter: none;
+}
+
 /* Тёмная панель слева поверх фото под текст */
 .band-hero::before {
   content: "";
@@ -683,43 +695,62 @@ main {
 
 /* --- Адаптив HERO --- */
 
+/* TABLET */
 @media (max-width: 1024px) {
   .band-hero {
     min-height: 80vh;
-    background-position: center center;
+    /* сдвигаем фон вправо, ребёнок виден */
+    background-position: center right;
   }
 
   .band-hero::before {
-    width: 100%;
-    background: rgba(40, 3, 106, 0.9); /* панель на всю ширину, чтобы текст читался */
+    width: 60%;
+    background: linear-gradient(
+      to right,
+      rgba(40, 3, 106, 0.96) 0%,
+      rgba(40, 3, 106, 0.9) 55%,
+      rgba(40, 3, 106, 0.0) 100%
+    );
   }
 
   .hero-layout {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .hero-content {
-    flex: 0 0 100%;
+    flex: 0 0 60%;
     padding: 80px 0 70px;
   }
 
   .hero-inner {
-    max-width: 520px;
+    max-width: 460px;
   }
 }
 
+/* MOBILE */
 @media (max-width: 768px) {
   .band-hero {
-    min-height: 70vh;
-    background-position: center top;
+    min-height: 80vh;
+    background-position: center right;
+  }
+
+  .band-hero::before {
+    width: 70%;
+    background: linear-gradient(
+      to right,
+      rgba(40, 3, 106, 0.97) 0%,
+      rgba(40, 3, 106, 0.9) 55%,
+      rgba(40, 3, 106, 0.0) 100%
+    );
   }
 
   .hero-content {
-    padding: 56px 0 48px;
+    flex: 0 0 70%;
+    padding: 64px 0 40px;
   }
 
   .hero-title {
-    font-size: clamp(2.1rem, 6vw, 2.6rem);
+    font-size: clamp(2rem, 6vw, 2.4rem);
   }
 }
 
@@ -1043,8 +1074,10 @@ main {
 .card-image {
   height: 160px;
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   margin-bottom: 14px;
+  /* чтобы не тянуть фон странно на разных экранах */
+  aspect-ratio: 4 / 3;
 }
 
 /* =========================================================
@@ -1363,7 +1396,7 @@ main {
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE — общие вещи, кроме hero (он выше)
 ========================================================= */
 
 @media (max-width: 1024px) {
