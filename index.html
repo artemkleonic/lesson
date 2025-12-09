@@ -16,7 +16,7 @@
 
     <meta name="theme-color" content="#662046" />
 
-    <!-- Fonts: serious legal fonts -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -58,63 +58,61 @@
     <header class="site-header" id="site-header">
       <div class="container">
         <div class="header-inner">
-          <!-- ЛОГО -->
-          <a href="#top" class="logo-badge">
-            <img src="img/logo.png" alt="REPRONOVA logo" class="logo-icon" />
+
+          <!-- ЛЕВОЕ МЕНЮ (2 строки) -->
+          <nav class="nav-desktop nav-left" aria-label="Main navigation left">
+            <div class="nav-row">
+              <a class="nav-link" href="#about">About Us</a>
+              <a class="nav-link" href="#services">Services</a>
+            </div>
+            <div class="nav-row">
+              <a class="nav-link" href="#parents">Intended Parents</a>
+              <a class="nav-link" href="#agencies">Agencies &amp; Clinics</a>
+            </div>
+          </nav>
+
+          <!-- ЛОГО В САМОМ ЦЕНТРЕ -->
+          <a href="/" class="header-logo" aria-label="REPRONOVA homepage">
+            <img src="img/logo.jpg" alt="REPRONOVA" class="logo-icon" />
           </a>
 
-          <!-- МЕНЮ + КОНТРОЛЫ -->
-          <div class="header-main">
-            <!-- DESKTOP NAV -->
-            <nav class="nav-desktop" aria-label="Main menu">
-              <ul class="nav-list">
-                <li>
-                  <a class="nav-link" data-i18n="nav.about" href="#about">About Us</a>
-                </li>
-                <li>
-                  <a class="nav-link" data-i18n="nav.services" href="#services">Services</a>
-                </li>
-                <li>
-                  <a class="nav-link" data-i18n="nav.parents" href="#parents">Intended Parents</a>
-                </li>
-                <li>
-                  <a class="nav-link" data-i18n="nav.agencies" href="#agencies">Agencies &amp; Clinics</a>
-                </li>
-                <li>
-                  <a class="nav-link" data-i18n="nav.surrogates" href="#surrogates">Surrogates &amp; Donors</a>
-                </li>
-                <li>
-                  <a class="nav-link" data-i18n="nav.news" href="#news">News &amp; Events</a>
-                </li>
-                <li>
-                  <a class="nav-link" data-i18n="nav.resources" href="#resources">Resources</a>
-                </li>
-                <li>
-                  <a class="nav-link nav-link--primary" data-i18n="nav.contacts" href="#contacts">
-                    Contacts
-                  </a>
-                </li>
-              </ul>
-            </nav>
-
-            <!-- LANG + BURGER -->
-            <div class="header-controls">
-              <div class="lang-switcher" id="lang-switcher">
-                <button type="button" class="lang-current">EN</button>
-                <div class="lang-menu">
-                  <button type="button" data-lang="en" class="active">EN — English</button>
-                  <button type="button" data-lang="es">ES — Español</button>
-                  <button type="button" data-lang="de">DE — Deutsch</button>
-                  <button type="button" data-lang="ru">RU — Русский</button>
-                </div>
-              </div>
-
-              <button class="burger" id="burger" type="button">
-                <span class="burger-line"></span>
-              </button>
+          <!-- ПРАВОЕ МЕНЮ (2 строки, зеркально левому) -->
+          <nav class="nav-desktop nav-right" aria-label="Main navigation right">
+            <div class="nav-row">
+              <a class="nav-link" href="#surrogates">Surrogates &amp; Donors</a>
+              <a class="nav-link" href="#news">News &amp; Events</a>
             </div>
+            <div class="nav-row">
+              <a class="nav-link" href="#resources">Resources</a>
+              <a class="nav-link nav-link--primary" href="#contacts">Contacts</a>
+            </div>
+          </nav>
+
+          <!-- ПРАВЫЙ БЛОК: ЯЗЫКИ + БУРГЕР -->
+          <!-- <div class="header-controls">
+            <div class="lang-switcher">
+              <button class="lang-current" type="button">EN</button>
+              <div class="lang-menu">
+                <button data-lang="en" class="active" type="button">
+                  EN — English
+                </button>
+                <button data-lang="es" type="button">ES — Español</button>
+                <button data-lang="de" type="button">DE — Deutsch</button>
+                <button data-lang="ru" type="button">RU — Русский</button>
+              </div>
+            </div>
+
+            <button
+              class="burger"
+              id="burger"
+              type="button"
+              aria-label="Open navigation"
+            >
+              <span class="burger-line"></span>
+            </button>
           </div>
-        </div>
+
+        </div> -->
       </div>
     </header>
 
@@ -139,8 +137,7 @@
     <!-- ================= MAIN ================= -->
     <main id="top">
       <!-- HERO -->
-      <section class="band band-hero" id="hero"   style="background-image:url('./img/hero.png');background-size:cover;background-position:center;"
->
+      <section class="band band-hero" id="hero">
         <div class="container hero-layout">
           <div class="hero-content">
             <div class="hero-inner" data-aos="fade-right">
@@ -152,23 +149,32 @@
                 <span data-i18n="hero.titleLine2">around the world</span>
               </h1>
               <p class="hero-subtitle" data-i18n="hero.subtitle">
-                We guide surrogacy and gamete donation programs in more than 30 countries,
-                ensuring legal safety for parents and children.
+                We guide surrogacy and gamete donation programs in more than 30
+                countries, ensuring legal safety for parents and children.
               </p>
               <p class="hero-meta" data-i18n="hero.meta">
-                20+ years of experience · 30+ countries · 1000+ successful cases
+                20+ years of experience · 30+ countries · 1000+ successful
+                cases
               </p>
               <div class="hero-cta">
-                <a href="#contacts" class="btn-primary" data-i18n="hero.ctaPrimary">
+                <a
+                  href="#contacts"
+                  class="btn-primary"
+                  data-i18n="hero.ctaPrimary"
+                >
                   Book a consultation
                 </a>
-                <a href="#services" class="btn-outline" data-i18n="hero.ctaSecondary">
+                <a
+                  href="#services"
+                  class="btn-outline"
+                  data-i18n="hero.ctaSecondary"
+                >
                   Learn more
                 </a>
               </div>
               <p class="hero-note" data-i18n="hero.note">
-                We are fully independent from clinics and act only in the interests of our
-                clients.
+                We are fully independent from clinics and act only in the
+                interests of our clients.
               </p>
             </div>
           </div>
@@ -181,8 +187,8 @@
           <div class="section-heading" data-aos="fade-up">
             <h2 data-i18n="about.title">About us</h2>
             <p data-i18n="about.text">
-              REPRONOVA is an independent international agency focused on the legal support
-              of surrogacy and gamete donation programs.
+              REPRONOVA is an independent international agency focused on the
+              legal support of surrogacy and gamete donation programs.
             </p>
           </div>
           <p
@@ -191,12 +197,12 @@
             data-aos-delay="100"
             data-i18n="about.body"
           >
-            We act as a bridge between intended parents, clinics, surrogates and donors,
-            ensuring transparency, legal compliance and protection of the child’s rights
-            in both your home country and the jurisdiction where the program is carried
-            out. Our team of lawyers and coordinators speaks several languages and
-            supports families from the first consultation to obtaining the child’s
-            documents.
+            We act as a bridge between intended parents, clinics, surrogates
+            and donors, ensuring transparency, legal compliance and protection
+            of the child’s rights in both your home country and the
+            jurisdiction where the program is carried out. Our team of lawyers
+            and coordinators speaks several languages and supports families
+            from the first consultation to obtaining the child’s documents.
           </p>
         </div>
       </section>
@@ -207,23 +213,29 @@
           <div class="section-heading" data-aos="fade-up">
             <h2 data-i18n="expertise.title">Our expertise</h2>
             <p data-i18n="expertise.text">
-              We combine international reproductive law, medical insight and hands-on
-              experience with complex cross-border cases.
+              We combine international reproductive law, medical insight and
+              hands-on experience with complex cross-border cases.
             </p>
           </div>
 
           <div class="stats-row" data-aos="fade-up" data-aos-delay="50">
-            <div class="stat-item">
+            <div class="stat-item stat-item--years">
               <div class="stat-number" data-counter="20">0</div>
-              <div class="stat-label" data-i18n="stats.years">years of experience</div>
+              <div class="stat-label" data-i18n="stats.years">
+                years of experience
+              </div>
             </div>
-            <div class="stat-item">
+            <div class="stat-item stat-item--countries">
               <div class="stat-number" data-counter="30">0</div>
-              <div class="stat-label" data-i18n="stats.countries">countries</div>
+              <div class="stat-label" data-i18n="stats.countries">
+                countries
+              </div>
             </div>
-            <div class="stat-item">
+            <div class="stat-item stat-item--families">
               <div class="stat-number" data-counter="1000">0</div>
-              <div class="stat-label" data-i18n="stats.families">families supported</div>
+              <div class="stat-label" data-i18n="stats.families">
+                families supported
+              </div>
             </div>
           </div>
 
@@ -244,27 +256,35 @@
         <div class="container">
           <div class="section-heading" data-aos="fade-up">
             <h2 data-i18n="founder.title">Founder</h2>
-            <p data-i18n="founder.subtitle">The face and philosophy behind REPRONOVA.</p>
+            <p data-i18n="founder.subtitle">
+              The face and philosophy behind REPRONOVA.
+            </p>
           </div>
 
           <div class="founder-layout">
             <div class="founder-photo" data-aos="fade-right">
-              <div class="founder-tag" data-i18n="founder.badge">Founder</div>
+              <div class="founder-tag" data-i18n="founder.badge">
+                Founder
+              </div>
             </div>
             <div class="founder-text" data-aos="fade-left">
               <h3 data-i18n="founder.name">Dr. Anna Kovalenko</h3>
               <p data-i18n="founder.text1">
-                A leading expert in international reproductive law with experience in
-                Europe, the US, Asia and Latin America. For more than 20 years she has
-                advised families, clinics and public authorities on surrogacy and gamete
-                donation.
+                A leading expert in international reproductive law with
+                experience in Europe, the US, Asia and Latin America. For more
+                than 20 years she has advised families, clinics and public
+                authorities on surrogacy and gamete donation.
               </p>
               <p style="margin-top: 10px" data-i18n="founder.text2">
-                Author of over 50 scientific and practical publications, speaker at key
-                conferences and expert for international media.
+                Author of over 50 scientific and practical publications,
+                speaker at key conferences and expert for international media.
               </p>
               <div style="margin-top: 20px">
-                <a href="founder.html" class="btn-outline" data-i18n="founder.button">
+                <a
+                  href="founder.html"
+                  class="btn-outline"
+                  data-i18n="founder.button"
+                >
                   Read more
                 </a>
               </div>
@@ -279,7 +299,8 @@
           <div class="section-heading" data-aos="fade-up">
             <h2 data-i18n="services.title">Services</h2>
             <p data-i18n="services.subtitle">
-              Core directions of our work for intended parents, agencies and clinics.
+              Core directions of our work for intended parents, agencies and
+              clinics.
             </p>
           </div>
 
@@ -291,11 +312,13 @@
                     class="card-image"
                     style="background-image: url('./img/services/EKO-2.jpg')"
                   ></div>
-                  <h3 data-i18n="services.surrogacy.title">Surrogacy programs</h3>
+                  <h3 data-i18n="services.surrogacy.title">
+                    Surrogacy programs
+                  </h3>
                   <p data-i18n="services.surrogacy.text">
-                    Legal and organisational support of programs in safe jurisdictions:
-                    country selection, contract review and full coordination until the
-                    child’s documents are issued.
+                    Legal and organisational support of programs in safe
+                    jurisdictions: country selection, contract review and full
+                    coordination until the child’s documents are issued.
                   </p>
                   <a href="services/surrogacy.html" data-i18n="services.link">
                     Learn more
@@ -309,11 +332,13 @@
                     class="card-image"
                     style="background-image: url('./img/services/gamete-domenation.png')"
                   ></div>
-                  <h3 data-i18n="services.donation.title">Gamete donation</h3>
+                  <h3 data-i18n="services.donation.title">
+                    Gamete donation
+                  </h3>
                   <p data-i18n="services.donation.text">
-                    Work with vetted donor banks in Europe, the US, Canada and other
-                    countries. Legal analysis of agreements and protection of the rights
-                    of parents and the child.
+                    Work with vetted donor banks in Europe, the US, Canada and
+                    other countries. Legal analysis of agreements and
+                    protection of the rights of parents and the child.
                   </p>
                   <a href="services/donation.html" data-i18n="services.link">
                     Learn more
@@ -327,11 +352,13 @@
                     class="card-image"
                     style="background-image: url('./img/services/legal-audit.jpg')"
                   ></div>
-                  <h3 data-i18n="services.audit.title">Independent legal audit</h3>
+                  <h3 data-i18n="services.audit.title">
+                    Independent legal audit
+                  </h3>
                   <p data-i18n="services.audit.text">
-                    Review of contracts, programs and clinics before signing. Risk
-                    assessment and mapping of parentage and citizenship scenarios for the
-                    child.
+                    Review of contracts, programs and clinics before signing.
+                    Risk assessment and mapping of parentage and citizenship
+                    scenarios for the child.
                   </p>
                   <a href="services/legal.html" data-i18n="services.link">
                     Learn more
@@ -351,30 +378,39 @@
           <div class="section-heading" data-aos="fade-up">
             <h2 data-i18n="why.title">Why REPRONOVA</h2>
             <p data-i18n="why.subtitle">
-              Three pillars of our approach: independence, legal accuracy and global
-              experience.
+              Three pillars of our approach: independence, legal accuracy and
+              global experience.
             </p>
           </div>
           <div class="grid">
             <article class="card" data-aos="fade-up">
               <h3 data-i18n="why.independence.title">Independence</h3>
               <p data-i18n="why.independence.text">
-                We do not sell clinic packages and do not receive commissions for
-                referrals. Our only interest is your legal safety and a realistic plan.
+                We do not sell clinic packages and do not receive commissions
+                for referrals. Our only interest is your legal safety and a
+                realistic plan.
               </p>
             </article>
-            <article class="card" data-aos="fade-up" data-aos-delay="80">
+            <article
+              class="card"
+              data-aos="fade-up"
+              data-aos-delay="80"
+            >
               <h3 data-i18n="why.legal.title">Legal certainty</h3>
               <p data-i18n="why.legal.text">
-                We analyse parentage and citizenship scenarios in your home country before
-                you start, so you avoid unexpected legal traps.
+                We analyse parentage and citizenship scenarios in your home
+                country before you start, so you avoid unexpected legal traps.
               </p>
             </article>
-            <article class="card" data-aos="fade-up" data-aos-delay="140">
+            <article
+              class="card"
+              data-aos="fade-up"
+              data-aos-delay="140"
+            >
               <h3 data-i18n="why.global.title">International reach</h3>
               <p data-i18n="why.global.text">
-                We track legislative changes in 30+ jurisdictions and update strategies for
-                our clients in real time.
+                We track legislative changes in 30+ jurisdictions and update
+                strategies for our clients in real time.
               </p>
             </article>
           </div>
@@ -384,7 +420,9 @@
               class="btn-outline"
               style="margin-top: 26px"
               data-i18n="why.button"
-            >Why Us?</a>
+            >
+              Why Us?
+            </a>
           </div>
         </div>
       </section>
@@ -395,7 +433,8 @@
           <div class="section-heading" data-aos="fade-up">
             <h2 data-i18n="testimonials.title">Testimonials</h2>
             <p data-i18n="testimonials.subtitle">
-              Stories of families who have already walked this path with REPRONOVA.
+              Stories of families who have already walked this path with
+              REPRONOVA.
             </p>
           </div>
 
@@ -404,13 +443,17 @@
               <div class="swiper-slide">
                 <article class="card testimonial-card">
                   <p data-i18n="testimonials.1.text">
-                    “Thanks to REPRONOVA we are finally holding our daughter. Every step
-                    was transparent and the team was available even on weekends.”
+                    “Thanks to REPRONOVA we are finally holding our daughter.
+                    Every step was transparent and the team was available even
+                    on weekends.”
                   </p>
                   <div class="testimonial-meta">
                     <div class="testimonial-avatar">SM</div>
                     <div>
-                      <div class="testimonial-name" data-i18n="testimonials.1.name">
+                      <div
+                        class="testimonial-name"
+                        data-i18n="testimonials.1.name"
+                      >
                         Sofia &amp; Marco
                       </div>
                       <div
@@ -426,13 +469,17 @@
               <div class="swiper-slide">
                 <article class="card testimonial-card">
                   <p data-i18n="testimonials.2.text">
-                    “They explained the pros and cons of different countries, helped us
-                    avoid legally risky options and choose the best route to our son.”
+                    “They explained the pros and cons of different countries,
+                    helped us avoid legally risky options and choose the best
+                    route to our son.”
                   </p>
                   <div class="testimonial-meta">
                     <div class="testimonial-avatar">AA</div>
                     <div>
-                      <div class="testimonial-name" data-i18n="testimonials.2.name">
+                      <div
+                        class="testimonial-name"
+                        data-i18n="testimonials.2.name"
+                      >
                         Alexey &amp; Anna
                       </div>
                       <div
@@ -448,14 +495,17 @@
               <div class="swiper-slide">
                 <article class="card testimonial-card">
                   <p data-i18n="testimonials.3.text">
-                    “Our complex case in Mexico ended with recognition of parentage and
-                    citizenship in both countries. Without REPRONOVA it would not have been
-                    possible.”
+                    “Our complex case in Mexico ended with recognition of
+                    parentage and citizenship in both countries. Without
+                    REPRONOVA it would not have been possible.”
                   </p>
                   <div class="testimonial-meta">
                     <div class="testimonial-avatar">LC</div>
                     <div>
-                      <div class="testimonial-name" data-i18n="testimonials.3.name">
+                      <div
+                        class="testimonial-name"
+                        data-i18n="testimonials.3.name"
+                      >
                         Li &amp; Chen
                       </div>
                       <div
@@ -494,40 +544,61 @@
                 Greece 2025: new opportunities for same-sex couples
               </h3>
               <p data-i18n="news.1.text">
-                On 1 December 2025 amendments come into force expanding access to
-                surrogacy programs for same-sex couples. We explain the conditions and
-                risks.
+                On 1 December 2025 amendments come into force expanding access
+                to surrogacy programs for same-sex couples. We explain the
+                conditions and risks.
               </p>
-              <a href="news/greece-2025.html" data-i18n="news.readMore">Read more</a>
+              <a href="news/greece-2025.html" data-i18n="news.readMore">
+                Read more
+              </a>
             </article>
-            <article class="card" data-aos="fade-up" data-aos-delay="80">
+            <article
+              class="card"
+              data-aos="fade-up"
+              data-aos-delay="80"
+            >
               <div
                 class="card-image"
                 style="background-image: url('img/news/mexico-ban.png')"
               ></div>
-              <h3 data-i18n="news.2.title">Mexico limits commercial surrogacy from 2026</h3>
+              <h3 data-i18n="news.2.title">
+                Mexico limits commercial surrogacy from 2026
+              </h3>
               <p data-i18n="news.2.text">
-                What should clients already in programs do, and which jurisdictions can be
-                considered as alternatives — our detailed analysis.
+                What should clients already in programs do, and which
+                jurisdictions can be considered as alternatives — our detailed
+                analysis.
               </p>
-              <a href="news/mexico-ban.html" data-i18n="news.readMore">Read more</a>
+              <a href="news/mexico-ban.html" data-i18n="news.readMore">
+                Read more
+              </a>
             </article>
-            <article class="card" data-aos="fade-up" data-aos-delay="140">
+            <article
+              class="card"
+              data-aos="fade-up"
+              data-aos-delay="140"
+            >
               <div
                 class="card-image"
                 style="background-image: url('img/news/canada-dual.png')"
               ></div>
-              <h3 data-i18n="news.3.title">Canada: successful dual citizenship case</h3>
+              <h3 data-i18n="news.3.title">
+                Canada: successful dual citizenship case
+              </h3>
               <p data-i18n="news.3.text">
-                Our clients received passports of two countries within 45 days after birth.
-                We share how we built the strategy.
+                Our clients received passports of two countries within 45 days
+                after birth. We share how we built the strategy.
               </p>
-              <a href="news/canada-case.html" data-i18n="news.readMore">Read more</a>
+              <a href="news/canada-case.html" data-i18n="news.readMore">
+                Read more
+              </a>
             </article>
           </div>
 
           <div style="text-align: center; margin-top: 26px">
-            <a href="news.html" class="btn-outline" data-i18n="news.all">See all news</a>
+            <a href="news.html" class="btn-outline" data-i18n="news.all">
+              See all news
+            </a>
           </div>
         </div>
       </section>
@@ -584,40 +655,74 @@
               >
                 <h2 data-i18n="resources.title">Resources</h2>
                 <p data-i18n="resources.text">
-                  Legal overviews, guides and answers to the most common questions.
+                  Legal overviews, guides and answers to the most common
+                  questions.
                 </p>
               </div>
               <div class="grid">
-                <article class="card" data-aos="fade-right" data-aos-delay="80">
+                <article
+                  class="card"
+                  data-aos="fade-right"
+                  data-aos-delay="80"
+                >
                   <h3 data-i18n="resources.legislation.title">Legislation</h3>
                   <p data-i18n="resources.legislation.text">
-                    Overview of key rules on surrogacy and gamete donation in more than 30
-                    countries.
+                    Overview of key rules on surrogacy and gamete donation in
+                    more than 30 countries.
                   </p>
-                  <a href="resources/legislation.html" data-i18n="resources.open">Open</a>
+                  <a
+                    href="resources/legislation.html"
+                    data-i18n="resources.open"
+                  >
+                    Open
+                  </a>
                 </article>
-                <article class="card" data-aos="fade-right" data-aos-delay="140">
-                  <h3 data-i18n="resources.publications.title">Publications</h3>
+                <article
+                  class="card"
+                  data-aos="fade-right"
+                  data-aos-delay="140"
+                >
+                  <h3 data-i18n="resources.publications.title">
+                    Publications
+                  </h3>
                   <p data-i18n="resources.publications.text">
-                    Articles and research by our experts in international reproductive law.
+                    Articles and research by our experts in international
+                    reproductive law.
                   </p>
-                  <a href="resources/publications.html" data-i18n="resources.open">Open</a>
+                  <a
+                    href="resources/publications.html"
+                    data-i18n="resources.open"
+                  >
+                    Open
+                  </a>
                 </article>
-                <article class="card" data-aos="fade-right" data-aos-delay="200">
+                <article
+                  class="card"
+                  data-aos="fade-right"
+                  data-aos-delay="200"
+                >
                   <h3 data-i18n="resources.faq.title">FAQ</h3>
                   <p data-i18n="resources.faq.text">
-                    Answers to the questions we hear most often from families, agencies and
-                    clinics.
+                    Answers to the questions we hear most often from families,
+                    agencies and clinics.
                   </p>
-                  <a href="resources/faq.html" data-i18n="resources.open">Open</a>
+                  <a href="resources/faq.html" data-i18n="resources.open">
+                    Open
+                  </a>
                 </article>
-                <article class="card" data-aos="fade-right" data-aos-delay="260">
+                <article
+                  class="card"
+                  data-aos="fade-right"
+                  data-aos-delay="260"
+                >
                   <h3 data-i18n="resources.guides.title">Guides</h3>
                   <p data-i18n="resources.guides.text">
-                    Practical checklists and step-by-step guides for choosing a country and
-                    building a strategy.
+                    Practical checklists and step-by-step guides for choosing a
+                    country and building a strategy.
                   </p>
-                  <a href="resources/guides.html" data-i18n="resources.open">Open</a>
+                  <a href="resources/guides.html" data-i18n="resources.open">
+                    Open
+                  </a>
                 </article>
               </div>
             </div>
@@ -631,8 +736,8 @@
               >
                 <h2 data-i18n="contact.title">Contacts</h2>
                 <p data-i18n="contact.text">
-                  Send us a short request — we will outline several strategies already
-                  during the introductory consultation.
+                  Send us a short request — we will outline several strategies
+                  already during the introductory consultation.
                 </p>
               </div>
 
@@ -731,9 +836,11 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <div class="footer-title" data-i18n="footer.brand.title">REPRONOVA</div>
+            <div class="footer-title" data-i18n="footer.brand.title">
+              REPRONOVA
+            </div>
             <p
-              style="font-size: 0.9rem; opacity: 0.9"
+              style="font-size: 0.95rem; opacity: 0.9; line-height: 1.7"
               data-i18n="footer.brand.text"
             >
               International reproductive law agency since 2004.<br />
@@ -748,64 +855,96 @@
           </div>
 
           <div>
-            <div class="footer-title" data-i18n="footer.about.title">About Us</div>
+            <div class="footer-title" data-i18n="footer.about.title">
+              About Us
+            </div>
             <ul class="footer-links">
               <li>
-                <a href="about/mission.html" data-i18n="footer.about.mission">Mission</a>
+                <a href="about/mission.html" data-i18n="footer.about.mission">
+                  Mission
+                </a>
               </li>
               <li>
-                <a href="about/team.html" data-i18n="footer.about.team">Team</a>
+                <a href="about/team.html" data-i18n="footer.about.team">
+                  Team
+                </a>
               </li>
               <li>
-                <a href="founder.html" data-i18n="footer.about.founder">Founder</a>
+                <a href="founder.html" data-i18n="footer.about.founder">
+                  Founder
+                </a>
               </li>
               <li>
-                <a href="media.html" data-i18n="footer.about.media">Media about us</a>
+                <a href="media.html" data-i18n="footer.about.media">
+                  Media about us
+                </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <div class="footer-title" data-i18n="footer.services.title">Services</div>
+            <div class="footer-title" data-i18n="footer.services.title">
+              Services
+            </div>
             <ul class="footer-links">
               <li>
-                <a href="services.html" data-i18n="footer.services.all">Full list</a>
+                <a href="services.html" data-i18n="footer.services.all">
+                  Full list
+                </a>
               </li>
               <li>
                 <a
                   href="services/legal-opinion.html"
                   data-i18n="footer.services.legalOpinions"
-                >Legal opinions</a>
+                >
+                  Legal opinions
+                </a>
               </li>
               <li>
                 <a
                   href="services/independent-advisor.html"
                   data-i18n="footer.services.advisor"
-                >Independent legal advisor</a>
+                >
+                  Independent legal advisor
+                </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <div class="footer-title" data-i18n="footer.resources.title">Resources</div>
+            <div class="footer-title" data-i18n="footer.resources.title">
+              Resources
+            </div>
             <ul class="footer-links">
               <li>
                 <a
                   href="resources/legislation.html"
                   data-i18n="footer.resources.legislation"
-                >Legislation</a>
+                >
+                  Legislation
+                </a>
               </li>
               <li>
                 <a
                   href="resources/publications.html"
                   data-i18n="footer.resources.publications"
-                >Publications</a>
+                >
+                  Publications
+                </a>
               </li>
               <li>
-                <a href="resources/faq.html" data-i18n="footer.resources.faq">FAQ</a>
+                <a
+                  href="resources/faq.html"
+                  data-i18n="footer.resources.faq"
+                >
+                  FAQ
+                </a>
               </li>
               <li>
-                <a href="resources/guides.html" data-i18n="footer.resources.guides">
+                <a
+                  href="resources/guides.html"
+                  data-i18n="footer.resources.guides"
+                >
                   Guides
                 </a>
               </li>
@@ -818,12 +957,17 @@
             </div>
             <ul class="footer-links">
               <li>
-                <a href="news/industry.html" data-i18n="footer.news.industry">
+                <a
+                  href="news/industry.html"
+                  data-i18n="footer.news.industry"
+                >
                   Industry news
                 </a>
               </li>
               <li>
-                <a href="events/our.html" data-i18n="footer.news.our">Our events</a>
+                <a href="events/our.html" data-i18n="footer.news.our">
+                  Our events
+                </a>
               </li>
               <li>
                 <a href="events/other.html" data-i18n="footer.news.other">
@@ -834,37 +978,49 @@
           </div>
 
           <div>
-            <div class="footer-title" data-i18n="footer.partners.title">Partners</div>
+            <div class="footer-title" data-i18n="footer.partners.title">
+              Partners
+            </div>
             <ul class="footer-links">
               <li>
                 <a
                   href="partners/clinics.html"
                   data-i18n="footer.partners.clinics"
-                >Clinics</a>
+                >
+                  Clinics
+                </a>
               </li>
               <li>
                 <a
                   href="partners/law-firms.html"
                   data-i18n="footer.partners.lawFirms"
-                >Law firms</a>
+                >
+                  Law firms
+                </a>
               </li>
               <li>
                 <a
                   href="partners/cryobanks.html"
                   data-i18n="footer.partners.cryobanks"
-                >Cryobanks</a>
+                >
+                  Cryobanks
+                </a>
               </li>
               <li>
                 <a
                   href="partners/dna-labs.html"
                   data-i18n="footer.partners.dnaLabs"
-                >DNA labs</a>
+                >
+                  DNA labs
+                </a>
               </li>
             </ul>
           </div>
 
           <div>
-            <div class="footer-title" data-i18n="footer.subscribe.title">Subscribe</div>
+            <div class="footer-title" data-i18n="footer.subscribe.title">
+              Subscribe
+            </div>
             <form class="subscribe-form" id="subscribe-form">
               <input
                 type="email"
