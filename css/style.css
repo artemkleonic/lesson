@@ -1,20 +1,71 @@
 /* =========================================================
+   JOTIA FONT FAMILY (имена файлов НЕ меняем)
+========================================================= */
+
+@font-face {
+  font-family: "Jotia";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/fonnts.com-jotia-thin.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jotia";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/fonnts.com-jotia-light.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jotia";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/fonnts.com-jotia-regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jotia";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/fonnts.com-jotia-medium.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jotia";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/fonnts.com-jotia-bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Jotia";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/fonnts.com-jotia-heavy.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* =========================================================
    ROOT / TOKENS / RESET
 ========================================================= */
 
 :root {
-  /* БРЕНДОВАЯ ПАЛИТРА */
-  --burgundy: #662046;      /* Qatar burgundy */
+  /* БРЕНДОВАЯ ПАЛИТРА (по мотивам Qatar) */
+  --burgundy: #662046;      /* QR burgundy */
   --violet-deep: #28036a;   /* тёмно-фиолетовый */
+  --qatar-blue: #0b6fa4;    /* базовый синий */
+  --why-blue: #7f99f8;      /* более светлый голубой для Why REPRONOVA */
 
-  /* Доп. голубой оттенок */
-  --qatar-blue: #0b6fa4;
-
-  /* QR GREY 2 / PANTONE 431 */
-  --grey-light: #818A8F;
-  --grey-dark: #5E6A71;
+  /* QR GREY 2 / PANTONE 431 и вариации */
+  --grey-light: #818a8f;
+  --grey-dark: #5e6a71;
   --grey-dark-websafe: #666666;
-  --grey-deeper: #2C3135;
+  --grey-deeper: #2c3135;
 
   --white: #ffffff;
   --cream: #f7f2eb;
@@ -33,6 +84,9 @@
   /* Переходы */
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
+
+  /* Радиусы — убираем скругления */
+  --card-radius: 0;
 }
 
 /* --- Сброс и базовые настройки --- */
@@ -43,7 +97,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  border-radius: 0 !important; /* ВСЕ закругления в ноль */
 }
 
 html {
@@ -54,12 +107,13 @@ html {
 }
 
 body {
-  font-family: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Jotia", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
   background: var(--cream);
   color: var(--grey-dark);
   font-size: 16px;
   line-height: 1.75;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.01em;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -113,14 +167,15 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "IBM Plex Serif", Georgia, "Times New Roman", serif;
-  font-weight: 600;
+  font-family: "Jotia", sans-serif;
+  font-weight: 500;
   letter-spacing: 0.01em;
   color: var(--grey-deeper);
 }
 
 h1 {
   line-height: 1.15;
+  font-weight: 700;
 }
 
 h2,
@@ -170,27 +225,36 @@ h4 {
   left: 0;
   right: 0;
   height: var(--header-height);
-  background: var(--burgundy);
+  /* ТРИ ПОЛОСЫ: бордо / крем / бордо */
+  background: linear-gradient(
+    to right,
+    var(--burgundy) 0%,
+    var(--burgundy) 33.33%,
+    var(--cream) 33.33%,
+    var(--cream) 66.66%,
+    var(--burgundy) 66.66%,
+    var(--burgundy) 100%
+  );
   z-index: 1000;
 }
 
+/* убираем любые рамки / псевдо-декор */
+.site-header::before,
 .site-header::after {
-  display: none;
+  content: none;
 }
 
 .site-header .container {
   height: 100%;
 }
 
-/* Основная сетка:
-   [nav-left] [logo] [nav-right] [controls] */
-
+/* Сетка: [nav-left] [logo] [nav-right] */
 .header-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) auto minmax(0, 1.1fr) auto;
-  align-items: center;
-  column-gap: 16px; /* навигация максимально близко к лого */
   height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 12px;
 }
 
 /* ЛОГО */
@@ -244,7 +308,8 @@ h4 {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: "Jotia", sans-serif;
   color: var(--white);
   padding-block: 2px;
   white-space: nowrap;
@@ -285,134 +350,14 @@ h4 {
   display: none;
 }
 
-/* ПРАВЫЙ БЛОК: языки / бургер */
+/* Бургер / языки (отключены по умолчанию) */
 
 .header-controls {
-  justify-self: end;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-}
-
-/* LANG SWITCHER */
-
-.lang-switcher {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--white);
-}
-
-.lang-current {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  background: transparent;
-  color: var(--white);
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.lang-current::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-right: 1px solid var(--white);
-  border-bottom: 1px solid var(--white);
-  transform: rotate(45deg);
-}
-
-.lang-current:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.lang-menu {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 4px);
-  min-width: 190px;
-  padding: 4px;
-  background: var(--cream);
-  border: 1px solid rgba(0, 0, 0, 0.12);
   display: none;
-  flex-direction: column;
-  z-index: 1200;
 }
-
-.lang-menu button {
-  width: 100%;
-  text-align: left;
-  padding: 6px 8px;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: transparent;
-  color: var(--grey-dark);
-  transition:
-    background var(--transition-fast),
-    color var(--transition-fast);
-}
-
-.lang-menu button:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.lang-menu button.active {
-  background: rgba(102, 32, 70, 0.08);
-  color: var(--burgundy);
-}
-
-.lang-switcher:hover .lang-menu,
-.lang-switcher:focus-within .lang-menu {
-  display: flex;
-}
-
-/* BURGER */
 
 .burger {
   display: none;
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: transparent;
-  align-items: center;
-  justify-content: center;
-  transition:
-    background var(--transition-fast),
-    border-color var(--transition-fast);
-}
-
-.burger-line,
-.burger-line::before,
-.burger-line::after {
-  width: 20px;
-  height: 2px;
-  background: var(--white);
-  content: "";
-  position: relative;
-  display: flex;
-}
-
-.burger-line::before {
-  position: absolute;
-  top: -6px;
-}
-
-.burger-line::after {
-  position: absolute;
-  top: 6px;
-}
-
-.burger:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--white);
 }
 
 /* АДАПТАЦИЯ ХЕДЕРА */
@@ -455,6 +400,8 @@ h4 {
 @media (max-width: 768px) {
   .logo-icon {
     max-height: 95px;
+    height: 52px;
+    margin-left: 97px;
   }
 }
 
@@ -496,7 +443,8 @@ h4 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 500;
+  font-family: "Jotia", sans-serif;
   color: var(--white);
 }
 
@@ -574,25 +522,17 @@ main {
   color: var(--white);
 }
 
-.band-hero,
-.band-hero::before {
-  filter: none;
-  backdrop-filter: none;
-}
-
 .band-hero::before {
   content: "";
   position: absolute;
   inset: 0 0 0 auto;
   width: 50%;
-
   background: linear-gradient(
     to left,
     rgba(40, 3, 106, 0.95) 0%,
     rgba(40, 3, 106, 0.8) 60%,
-    rgba(40, 3, 106, 0.0) 100%
+    rgba(40, 3, 106, 0) 100%
   );
-
   pointer-events: none;
   z-index: 0;
 }
@@ -657,16 +597,19 @@ main {
   margin-bottom: 18px;
 }
 
+/* BUTTONS */
+
 .btn-primary,
 .btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 11px 22px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-size: 0.85rem;
+  font-family: "Jotia", sans-serif;
   border: 2px solid transparent;
   cursor: pointer;
   transition:
@@ -697,16 +640,6 @@ main {
   color: var(--burgundy);
 }
 
-.hero-media {
-  display: none !important;
-}
-
-.hero-card {
-  display: none;
-}
-
-/* TABLET HERO */
-
 @media (max-width: 1024px) {
   .band-hero {
     min-height: 80vh;
@@ -726,8 +659,6 @@ main {
     max-width: 460px;
   }
 }
-
-/* MOBILE HERO */
 
 @media (max-width: 768px) {
   .band-hero {
@@ -759,9 +690,9 @@ main {
   padding-block: 70px;
 }
 
-.band-beige {
-  background: var(--beige);
-  color: var(--grey-dark);
+.band-burgundy {
+  background: var(--burgundy);
+  color: var(--cream);
   padding-block: 70px;
 }
 
@@ -777,16 +708,21 @@ main {
   padding-block: 70px;
 }
 
-/* голубая секция — катарский синий */
+/* голубая секция */
 .band-slate {
   background: var(--qatar-blue);
   color: var(--white);
   padding-block: 70px;
 }
 
-/* одну голубую секцию (#resources) перекрашиваем в серый */
+/* Why REPRONOVA — более светлый голубой */
+#why.band-slate {
+  background: var(--why-blue);
+}
+
+/* Секция ресурсов — более светло-серая */
 #resources.band-slate {
-  background: var(--grey-dark);
+  background: var(--grey-light);
   padding-block: 70px 130px;
 }
 
@@ -825,13 +761,8 @@ main {
 }
 
 /* =========================================================
-   EXPERTISE (Our experience)
+   EXPERTISE (Our expertise)
 ========================================================= */
-
-#expertise {
-  background: var(--burgundy);
-  color: var(--cream);
-}
 
 #expertise .section-heading {
   max-width: 760px;
@@ -859,9 +790,21 @@ main {
   flex: 1 1 180px;
   max-width: 220px;
   text-align: center;
-  padding: 18px 16px 16px;
+  padding: 24px 18px 22px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--card-radius);
+}
+
+/* СЕРЫЕ КРУПНЫЕ ИКОНКИ — ориентир на Growing Families */
+.stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.4rem;
+  margin-bottom: 12px;
+  color: #a0a0a0;
+  filter: grayscale(1);
 }
 
 .stat-number {
@@ -876,28 +819,6 @@ main {
   letter-spacing: 0.03em;
 }
 
-/* эмодзи — серые */
-
-.stat-number::before {
-  display: block;
-  font-size: 1.7rem;
-  margin-bottom: 8px;
-  color: var(--grey-light);
-  filter: grayscale(1);
-}
-
-.stat-item--years .stat-number::before {
-  content: "⏳";
-}
-
-.stat-item--countries .stat-number::before {
-  content: "🌍";
-}
-
-.stat-item--families .stat-number::before {
-  content: "👨‍👩‍👧‍👦";
-}
-
 .stat-label {
   margin-top: 6px;
   font-size: 0.82rem;
@@ -906,53 +827,47 @@ main {
   color: rgba(247, 242, 235, 0.85);
 }
 
-.stat-note {
-  margin-top: 4px;
-  font-size: 0.85rem;
-  color: rgba(247, 242, 235, 0.8);
+@media (max-width: 768px) {
+  .stats-row {
+    gap: 20px;
+  }
+
+  .stat-item {
+    max-width: none;
+  }
 }
 
-/* As Seen In — строгий блок */
+/* As Seen In — как у Growing Families: светлый фон + логотипы */
 
 .seen-row {
   position: relative;
-  margin-top: 60px;
-  padding: 56px 40px 52px;
-  background: var(--cream);
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  margin-top: 50px;
+  padding: 32px 24px 30px;
+  background: #ffffff;
+  border-radius: var(--card-radius);
+  border: none;
   text-align: center;
   color: var(--grey-deeper);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
 }
 
 .seen-row::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 4px;
-  background: linear-gradient(
-    to right,
-    var(--burgundy),
-    var(--qatar-blue)
-  );
+  display: none;
 }
 
 .seen-label {
-  font-size: 1.3rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.26em;
-  font-weight: 700;
-  color: var(--burgundy);
-  margin-bottom: 28px;
+  letter-spacing: 0.18em;
+  color: var(--grey-deeper);
+  margin-bottom: 20px;
 }
 
 .seen-logos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 34px;
+  gap: 32px;
   align-items: center;
 }
 
@@ -960,13 +875,12 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 110px;
-  padding: 4px 10px;
+  padding: 2px 10px;
   font-size: 0.95rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--grey-deeper);
-  opacity: 0.9;
+  opacity: 0.85;
   transition:
     opacity var(--transition-fast),
     transform var(--transition-fast);
@@ -979,16 +893,8 @@ main {
 }
 
 @media (max-width: 768px) {
-  .stats-row {
-    gap: 20px;
-  }
-
-  .stat-item {
-    max-width: none;
-  }
-
   .seen-row {
-    padding: 40px 20px 38px;
+    padding: 28px 18px 26px;
   }
 
   .seen-logos {
@@ -1010,9 +916,12 @@ main {
   background: var(--white);
   color: var(--grey-dark);
   padding: 20px;
+  border-radius: var(--card-radius);
   border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  /* мягкая тень как на SimonPhin */
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
 }
 
 .band-dark .card,
@@ -1021,6 +930,7 @@ main {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.2);
   color: var(--white);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
 }
 
 .card h3 {
@@ -1068,16 +978,19 @@ main {
   background-position: center top;
   margin-bottom: 14px;
   aspect-ratio: 4 / 3;
+  border-radius: 0;
 }
 
 /* одинаковая высота карточек в блоке Services */
 .swiper-services .swiper-wrapper {
   align-items: stretch;
 }
+
 .swiper-services .swiper-slide {
   height: auto;
   display: flex;
 }
+
 .swiper-services .swiper-slide .card {
   height: 100%;
 }
@@ -1094,8 +1007,10 @@ main {
 }
 
 .founder-photo {
-  height: 360px;
-  background: url("../img/founder.jpg") center/cover no-repeat;
+  height: 600px;
+  background: url("../img/Founder-foto.png") center/cover no-repeat;
+  border-radius: var(--card-radius);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
 .founder-tag {
@@ -1155,6 +1070,7 @@ main {
   justify-content: center;
   font-weight: 700;
   font-size: 0.85rem;
+  border-radius: 0;
 }
 
 .testimonial-name {
@@ -1168,7 +1084,7 @@ main {
 }
 
 /* =========================================================
-   PARTNERS — строгие тёмные блоки
+   PARTNERS
 ========================================================= */
 
 .partner-grid {
@@ -1185,6 +1101,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: var(--card-radius);
   border: 1px solid rgba(255, 255, 255, 0.16);
   transition:
     background var(--transition-fast),
@@ -1254,15 +1171,16 @@ main {
 #contacts .card textarea {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.6);
   font-family: inherit;
-  font-size: 0.9rem !important;
+  font-size: 0.9rem;
   background: rgba(0, 0, 0, 0.25);
   color: var(--white);
 }
 
 /* =========================================================
-   FOOTER — БОЛЬШОЙ И ЧИТАБЕЛЬНЫЙ
+   FOOTER
 ========================================================= */
 
 .site-footer {
@@ -1333,6 +1251,7 @@ main {
 .footer-socials a {
   width: 32px;
   height: 32px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.4);
   display: flex;
   align-items: center;
@@ -1358,6 +1277,7 @@ main {
   width: 100%;
   max-width: 280px;
   padding: 10px 12px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.4);
   background: transparent;
   color: var(--white);
@@ -1401,7 +1321,7 @@ main {
 }
 
 /* =========================================================
-   RESPONSIVE — ОБЩЕЕ (КРОМЕ ХЕДЕРА)
+   RESPONSIVE — ОБЩЕЕ
 ========================================================= */
 
 @media (max-width: 1024px) {
@@ -1426,311 +1346,28 @@ main {
     grid-template-columns: 1fr;
   }
 }
-/* =========================================================
-   HEADER — НАВИГАЦИЯ
-========================================================= */
 
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--header-height);
-  background: var(--burgundy);
-  z-index: 1000;
-}
+/* ЛОГОТИПЫ СМИ (логотипы в As Seen In) */
 
-.site-header::after {
-  display: none;
-}
-
-.site-header .container {
-  height: 100%;
-  position: relative; /* нужно для absolute у .header-controls */
-}
-
-/* Сетка: [nav-left] [logo] [nav-right]  + отдельно язык справа */
-
-.header-inner {
-  height: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  column-gap: 12px; /* навигация максимально близко к лого */
-}
-
-/* ЛОГО */
-
-.header-logo {
+.seen-logos {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  justify-self: center;
+  align-items: center;
+  gap: 34px;
 }
 
-.logo-icon {
+.seen-logo img {
   display: block;
-  max-height: 150px;
-  height: auto;
+  height: 100px;       /* высота логотипов */
   width: auto;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
 }
 
-/* НАВИГАЦИИ */
-
-.nav-desktop {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.nav-left {
-  justify-self: end;
-  align-items: flex-end;
-  text-align: right;
-}
-
-.nav-right {
-  justify-self: start;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.nav-row {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  gap: 24px;
-}
-
-/* ссылки меню */
-
-.nav-link {
-  position: relative;
-  display: inline-block;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 700;
-  color: var(--white);
-  padding-block: 2px;
-  white-space: nowrap;
-  opacity: 0.95;
-  transition:
-    color var(--transition-fast),
-    opacity var(--transition-fast);
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background: var(--white);
-  transition: width var(--transition-fast);
-}
-
-.nav-link:hover {
+.seen-logo:hover img {
   opacity: 1;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Contacts как кнопка */
-
-.nav-link--primary {
-  padding: 4px 18px;
-  border: 1px solid var(--white);
-  background: transparent;
-}
-
-.nav-link--primary::after {
-  display: none;
-}
-
-/* ПРАВЫЙ БЛОК: языки / бургер
-   ВЫНЕСЕН ИЗ GRID и привязан к правому краю контейнера */
-
-.header-controls {
-  position: absolute;
-  right: 0;              /* прижали к правому краю контейнера */
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-}
-
-/* LANG SWITCHER — стили как были */
-
-.lang-switcher {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--white);
-}
-
-.lang-current {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  background: transparent;
-  color: var(--white);
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.lang-current::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-right: 1px solid var(--white);
-  border-bottom: 1px solid var(--white);
-  transform: rotate(45deg);
-}
-
-.lang-current:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.lang-menu {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 4px);
-  min-width: 190px;
-  padding: 4px;
-  background: var(--cream);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  display: none;
-  flex-direction: column;
-  z-index: 1200;
-}
-
-.lang-menu button {
-  width: 100%;
-  text-align: left;
-  padding: 6px 8px;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: transparent;
-  color: var(--grey-dark);
-  transition:
-    background var(--transition-fast),
-    color var(--transition-fast);
-}
-
-.lang-menu button:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.lang-menu button.active {
-  background: rgba(102, 32, 70, 0.08);
-  color: var(--burgundy);
-}
-
-.lang-switcher:hover .lang-menu,
-.lang-switcher:focus-within .lang-menu {
-  display: flex;
-}
-
-/* BURGER */
-
-.burger {
-  display: none;
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: transparent;
-  align-items: center;
-  justify-content: center;
-  transition:
-    background var(--transition-fast),
-    border-color var(--transition-fast);
-}
-
-.burger-line,
-.burger-line::before,
-.burger-line::after {
-  width: 20px;
-  height: 2px;
-  background: var(--white);
-  content: "";
-  position: relative;
-  display: flex;
-}
-
-.burger-line::before {
-  position: absolute;
-  top: -6px;
-}
-
-.burger-line::after {
-  position: absolute;
-  top: 6px;
-}
-
-.burger:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--white);
-}
-
-/* АДАПТАЦИЯ ХЕДЕРА */
-
-@media (max-width: 1200px) {
-  .logo-icon {
-    max-height: 140px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .site-header {
-    height: var(--header-height-scrolled);
-  }
-
-  .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
-
-  .nav-desktop {
-    display: none;
-  }
-
-  .header-logo {
-    justify-content: flex-start;
-  }
-
-  .logo-icon {
-    max-height: 110px;
-  }
-
-  /* на планшете/мобиле убираем absolute,
-     чтобы язык/бургер стояли нормально справа */
-  .header-controls {
-    position: static;
-    transform: none;
-  }
-
-  .burger {
-    display: flex;
-  }
-}
-
-@media (max-width: 768px) {
-  .logo-icon {
-    max-height: 95px;
-  }
+  transform: translateY(-2px);
+  filter: grayscale(0%);
 }

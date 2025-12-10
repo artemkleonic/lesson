@@ -16,13 +16,8 @@
 
     <meta name="theme-color" content="#662046" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Main CSS (+ локальные шрифты JOTIA подключены в style.css) -->
+    <link rel="stylesheet" href="./css/style.css" />
 
     <!-- Icons -->
     <link
@@ -41,13 +36,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="./css/style.css" />
   </head>
 
   <body>
-    <!-- Decorative squares -->
+    <!-- Decorative squares (отключены) -->
     <div class="bg-squares" aria-hidden="true">
       <div class="bg-square s1"></div>
       <div class="bg-square s2"></div>
@@ -59,7 +51,7 @@
       <div class="container">
         <div class="header-inner">
 
-          <!-- ЛЕВОЕ МЕНЮ (2 строки) -->
+          <!-- ЛЕВОЕ МЕНЮ -->
           <nav class="nav-desktop nav-left" aria-label="Main navigation left">
             <div class="nav-row">
               <a class="nav-link" href="#about">About Us</a>
@@ -71,12 +63,12 @@
             </div>
           </nav>
 
-          <!-- ЛОГО В САМОМ ЦЕНТРЕ -->
+          <!-- ЛОГО В ЦЕНТРЕ (на молочной полосе) -->
           <a href="/" class="header-logo" aria-label="REPRONOVA homepage">
-            <img src="img/logo.jpg" alt="REPRONOVA" class="logo-icon" />
+            <img src="./img/logo-Photoroom.png" alt="REPRONOVA" class="logo-icon" />
           </a>
 
-          <!-- ПРАВОЕ МЕНЮ (2 строки, зеркально левому) -->
+          <!-- ПРАВОЕ МЕНЮ -->
           <nav class="nav-desktop nav-right" aria-label="Main navigation right">
             <div class="nav-row">
               <a class="nav-link" href="#surrogates">Surrogates &amp; Donors</a>
@@ -88,8 +80,9 @@
             </div>
           </nav>
 
-          <!-- ПРАВЫЙ БЛОК: ЯЗЫКИ + БУРГЕР -->
-          <!-- <div class="header-controls">
+          <!-- ПРАВЫЙ БЛОК: на десктопе можно вернуть языки/бургер при необходимости -->
+          <!--
+          <div class="header-controls">
             <div class="lang-switcher">
               <button class="lang-current" type="button">EN</button>
               <div class="lang-menu">
@@ -111,8 +104,9 @@
               <span class="burger-line"></span>
             </button>
           </div>
+          -->
 
-        </div> -->
+        </div>
       </div>
     </header>
 
@@ -208,7 +202,7 @@
       </section>
 
       <!-- EXPERTISE -->
-      <section class="band band-beige" id="expertise">
+      <section class="band band-burgundy" id="expertise">
         <div class="container">
           <div class="section-heading" data-aos="fade-up">
             <h2 data-i18n="expertise.title">Our expertise</h2>
@@ -220,18 +214,27 @@
 
           <div class="stats-row" data-aos="fade-up" data-aos-delay="50">
             <div class="stat-item stat-item--years">
+              <div class="stat-icon">
+                <i class="fa-regular fa-hourglass-half" aria-hidden="true"></i>
+              </div>
               <div class="stat-number" data-counter="20">0</div>
               <div class="stat-label" data-i18n="stats.years">
                 years of experience
               </div>
             </div>
             <div class="stat-item stat-item--countries">
+              <div class="stat-icon">
+                <i class="fa-solid fa-globe" aria-hidden="true"></i>
+              </div>
               <div class="stat-number" data-counter="30">0</div>
               <div class="stat-label" data-i18n="stats.countries">
                 countries
               </div>
             </div>
             <div class="stat-item stat-item--families">
+              <div class="stat-icon">
+                <i class="fa-solid fa-people-group" aria-hidden="true"></i>
+              </div>
               <div class="stat-number" data-counter="1000">0</div>
               <div class="stat-label" data-i18n="stats.families">
                 families supported
@@ -239,14 +242,47 @@
             </div>
           </div>
 
+          <!-- As Seen In — как на GrowingFamilies: светлый фон + логотипы -->
           <div class="seen-row" data-aos="fade-up" data-aos-delay="120">
-            <div class="seen-label" data-i18n="seen.label">As Seen In</div>
+            <div class="seen-label">As Seen In</div>
             <div class="seen-logos">
-              <a class="seen-logo" href="media/forbes.html">Forbes</a>
-              <a class="seen-logo" href="media/bbc.html">BBC</a>
-              <a class="seen-logo" href="media/guardian.html">Guardian</a>
-              <a class="seen-logo" href="media/nyt.html">NY Times</a>
+              <a class="seen-logo" href="https://amp.theguardian.com/world/2020/jun/15/the-stranded-babies-of-kyiv-and-the-women-who-give-birth-for-money" target="_blank" rel="noopener">
+                <img src="img/media/guardian.png" alt="The Guardian" />
+              </a>
+
+              <a class="seen-logo" href="https://www.nytimes.com/2020/08/15/world/europe/ukraine-baby-surrogate.html" target="_blank" rel="noopener">
+                <img src="img/media/nyt.png" alt="The New York Times" />
+              </a>
+
+              <a class="seen-logo" href="https://www.marieclaire.com/health-fitness/a32433196/surrogacy-covid-19-ukraine/" target="_blank" rel="noopener">
+                <img src="img/media/marieclaire.png" alt="Marie Claire" />
+              </a>
+
+              <a class="seen-logo" href="https://www.abc.net.au/news/2019-08-21/motherland/11432194" target="_blank" rel="noopener">
+                <img src="img/media/abc.png" alt="ABC" />
+              </a>
+
+              <a class="seen-logo" href="https://www.dailymail.co.uk/femail/article-6587141/amp/Made-Ukraine-women-paid-14-000-carry-babies-mid-life-British-mums.html" target="_blank" rel="noopener">
+                <img src="img/media/dailymail.png" alt="Daily Mail" />
+              </a>
+
+              <a class="seen-logo" href="https://cne.news/article/1194-ukrainian-surrogacy-business-is-booming-despite-the-war" target="_blank" rel="noopener">
+                <img src="img/media/cne.png" alt="CNE News" />
+              </a>
+
+              <a class="seen-logo" href="https://amp.dw.com/en/coronavirus-babies-born-to-surrogates-stranded-in-ukraine-clinic/a-53547276" target="_blank" rel="noopener">
+                <img src="img/media/dw.png" alt="Deutsche Welle" />
+              </a>
+
+              <a class="seen-logo" href="https://www.aljazeera.com/features/2018/9/13/ukraines-baby-factories-the-human-cost-of-surrogacy" target="_blank" rel="noopener">
+                <img src="img/media/aljazeera.png" alt="Al Jazeera" />
+              </a>
+
+              <a class="seen-logo" href="https://english.elpais.com/elpais/2018/09/27/inenglish/1538051520_476218.html" target="_blank" rel="noopener">
+                <img src="img/media/elpais.png" alt="El País" />
+              </a>
             </div>
+
           </div>
         </div>
       </section>
@@ -255,35 +291,32 @@
       <section class="band band-deep" id="founder">
         <div class="container">
           <div class="section-heading" data-aos="fade-up">
-            <h2 data-i18n="founder.title">Founder</h2>
-            <p data-i18n="founder.subtitle">
-              The face and philosophy behind REPRONOVA.
+            <h2>Meet Sergii Antonov</h2>
+            <p>
+              Founder of REPRONOVA and international expert in reproductive law.
             </p>
           </div>
 
           <div class="founder-layout">
             <div class="founder-photo" data-aos="fade-right">
-              <div class="founder-tag" data-i18n="founder.badge">
-                Founder
-              </div>
+              <div class="founder-tag">Founder</div>
             </div>
             <div class="founder-text" data-aos="fade-left">
-              <h3 data-i18n="founder.name">Dr. Anna Kovalenko</h3>
-              <p data-i18n="founder.text1">
-                A leading expert in international reproductive law with
-                experience in Europe, the US, Asia and Latin America. For more
-                than 20 years she has advised families, clinics and public
-                authorities on surrogacy and gamete donation.
-              </p>
-              <p style="margin-top: 10px" data-i18n="founder.text2">
-                Author of over 50 scientific and practical publications,
-                speaker at key conferences and expert for international media.
+              <h3>Meet Sergii Antonov</h3>
+              <p>
+                Sergii Antonov is a fertility and medical lawyer and the founder
+                of REPRONOVA Agency. Trained as both a physician and an attorney,
+                he has spent more than twenty years advising clinics, agencies,
+                and intended parents on the legal and ethical safeguards of
+                cross-border surrogacy and assisted reproduction. Drawing on his
+                unique combination of clinical insight and legal expertise,
+                Sergii helps families build safe, transparent, and legally secure
+                paths to parenthood.
               </p>
               <div style="margin-top: 20px">
                 <a
                   href="founder.html"
                   class="btn-outline"
-                  data-i18n="founder.button"
                 >
                   Read more
                 </a>
@@ -849,7 +882,7 @@
             <div class="footer-socials">
               <a href="#"><i class="fab fa-instagram"></i></a>
               <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-telegram"></i></a>
+              <a href="#"><i class="fab fa-x-twitter"></i></a>
               <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
