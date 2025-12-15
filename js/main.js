@@ -1,15 +1,16 @@
 'use strict';
 
 /**
- * REPRONOVA main.js
+ * REPRONOVA main.js (исправлено)
  * - AOS animations
  * - Swiper sliders
  * - Header scroll + back-to-top
- * - Mobile menu
- * - Smooth scroll
+ * - Mobile menu (ESC / click outside / close on link)
+ * - Smooth scroll with correct offset under fixed header
  * - Counters
- * - i18n каркас (можно подключить переводы позже)
+ * - i18n каркас
  * - Forms
+ * - Dynamic CSS var: --header-current
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ==================== SWIPER ==================== */
   if (window.Swiper) {
-    // Services slider
     new Swiper('.swiper-services', {
       loop: true,
       slidesPerView: 1,
@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Testimonials slider
     new Swiper('.swiper-testimonials', {
       loop: true,
       slidesPerView: 1,
@@ -55,12 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==================== DOM ELEMENTS ==================== */
-
   const header = document.getElementById('site-header');
   const backToTop = document.getElementById('back-to-top');
   const burger = document.getElementById('burger');
   const navMobile = document.getElementById('nav-mobile');
   const langSwitcherEl = document.getElementById('lang-switcher');
+
+  /* ==================== HELPERS ==================== */
+
+  function setHeaderCurrentVar() {
+    const h = header ? header.offsetHeight : 0;
+    document.documentElement.style.setProperty('--header-current', `${h}px`);
+  }
+
+  function getScrollOffset() {
+    // небольшой зазор, чтобы заголовок секции “дышал”
+    const h = header ? header.offsetHeight : 0;
+    return h + 10;
+  }
 
   /* ==================== HEADER SCROLL + BACK TO TOP ==================== */
 
@@ -72,13 +83,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (backToTop) {
-      const visible = y > 300;
-      backToTop.classList.toggle('visible', visible);
+      backToTop.classList.toggle('visible', y > 300);
     }
+
+    // после смены класса scrolled высота меняется — обновляем var
+    setHeaderCurrentVar();
   }
 
-  window.addEventListener('scroll', handleScroll);
-  handleScroll(); // начальное состояние
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', setHeaderCurrentVar);
+  setHeaderCurrentVar();
+  handleScroll();
 
   if (backToTop) {
     backToTop.addEventListener('click', () => {
@@ -94,11 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (open) {
       burger.classList.add('active');
       navMobile.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('menu-open');
     } else {
       burger.classList.remove('active');
       navMobile.classList.remove('open');
-      document.body.style.overflow = '';
+      document.body.classList.remove('menu-open');
     }
   }
 
@@ -113,20 +128,36 @@ document.addEventListener('DOMContentLoaded', () => {
     setMenuState(shouldOpen);
   }
 
+  // Открытие/закрытие по бургеру
   if (burger && navMobile) {
     burger.addEventListener('click', (e) => {
       e.stopPropagation();
       toggleMenu();
     });
 
-    // Закрытие по клику на фон или ссылку
+    // Закрытие по клику на ссылку
     navMobile.addEventListener('click', (e) => {
       const link = e.target.closest('a');
       if (link) {
         toggleMenu(false);
-        return;
       }
-      if (e.target === navMobile) {
+    });
+
+    // Закрытие по ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMobile.classList.contains('open')) {
+        toggleMenu(false);
+      }
+    });
+
+    // Клик “вне меню” (на документе)
+    document.addEventListener('click', (e) => {
+      if (!navMobile.classList.contains('open')) return;
+
+      const clickInsideMenu = navMobile.contains(e.target);
+      const clickOnBurger = burger.contains(e.target);
+
+      if (!clickInsideMenu && !clickOnBurger) {
         toggleMenu(false);
       }
     });
@@ -147,13 +178,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     e.preventDefault();
 
-    const offset = header ? header.offsetHeight + 10 : 0;
     const top =
-      target.getBoundingClientRect().top + window.scrollY - offset;
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      getScrollOffset();
 
     window.scrollTo({ top, behavior: 'smooth' });
 
-    // Если открыт мобильный меню — закрываем
     if (navMobile && navMobile.classList.contains('open')) {
       toggleMenu(false);
     }
@@ -165,11 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setCounterFinalValue(el) {
     const target = Number(el.getAttribute('data-counter')) || 0;
-    if (target >= 1000) {
-      el.textContent = String(target);
-    } else {
-      el.textContent = `${target}+`;
-    }
+    if (target >= 1000) el.textContent = String(target);
+    else el.textContent = `${target}+`;
   }
 
   if ('IntersectionObserver' in window && counters.length) {
@@ -186,14 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
           function animate(time) {
             const progress = Math.min((time - start) / duration, 1);
             const value = Math.floor(target * progress);
-            if (target >= 1000) {
-              el.textContent = String(value);
-            } else {
-              el.textContent = `${value}+`;
-            }
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
+
+            if (target >= 1000) el.textContent = String(value);
+            else el.textContent = `${value}+`;
+
+            if (progress < 1) requestAnimationFrame(animate);
           }
 
           requestAnimationFrame(animate);
@@ -205,20 +230,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     counters.forEach((c) => countersObserver.observe(c));
   } else {
-    // fallback, если IntersectionObserver нет
     counters.forEach(setCounterFinalValue);
   }
 
   /* ==================== I18N (КАРКАС) ==================== */
 
-  /**
-   * Ожидается, что где-то до main.js подключат глобальный объект:
-   * window.REPRONOVA_TRANSLATIONS = {
-   *   en: { 'nav.about': 'About us', ... },
-   *   es: { ... },
-   *   ...
-   * };
-   */
   const translations = window.REPRONOVA_TRANSLATIONS || {};
   let currentLang = 'en';
 
@@ -232,37 +248,24 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!value) return;
 
       const tag = el.tagName;
-
-      if (tag === 'INPUT' || tag === 'TEXTAREA') {
-        el.placeholder = value;
-      } else {
-        el.textContent = value;
-      }
+      if (tag === 'INPUT' || tag === 'TEXTAREA') el.placeholder = value;
+      else el.textContent = value;
     });
   }
 
   function updateLangSwitcherUI(lang) {
     if (!langSwitcherEl) return;
 
-    // Обновляем текст "EN" в кнопке
     const currentBtn = langSwitcherEl.querySelector('.lang-current');
-    if (currentBtn) {
-      currentBtn.textContent = lang.toUpperCase();
-    }
+    if (currentBtn) currentBtn.textContent = lang.toUpperCase();
 
-    // Подсветка выбранного языка в меню
-    langSwitcherEl
-      .querySelectorAll('[data-lang]')
-      .forEach((btn) => {
-        btn.classList.toggle('active', btn.dataset.lang === lang);
-      });
+    langSwitcherEl.querySelectorAll('[data-lang]').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
   }
 
   function setLanguage(lang) {
-    if (!translations[lang] && Object.keys(translations).length) {
-      // Если переводы есть, но для этого языка нет — не меняем
-      return;
-    }
+    if (!translations[lang] && Object.keys(translations).length) return;
 
     currentLang = lang;
     document.documentElement.lang = lang;
@@ -272,11 +275,9 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTranslations();
   }
 
-  // Инициализация языка
   (function initLanguage() {
     const saved = localStorage.getItem('repronovaLang');
-    const browser =
-      (navigator.language || navigator.userLanguage || 'en').slice(0, 2);
+    const browser = (navigator.language || navigator.userLanguage || 'en').slice(0, 2);
 
     if (saved && (translations[saved] || !Object.keys(translations).length)) {
       currentLang = saved;
@@ -290,7 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTranslations();
   })();
 
-  // Обработчик клика по dropdown языков
   if (langSwitcherEl) {
     langSwitcherEl.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-lang]');
@@ -303,7 +303,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ==================== FORMS ==================== */
 
-  // Contact form (fake send)
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
 
@@ -312,17 +311,13 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
 
       const dict = translations[currentLang] || {};
-      const defaultText =
-        'Thank you! We will get back to you within 1–2 business days.';
-
-      formMessage.textContent =
-        dict['contact.success'] || defaultText;
+      const defaultText = 'Thank you! We will get back to you within 1–2 business days.';
+      formMessage.textContent = dict['contact.success'] || defaultText;
 
       contactForm.reset();
     });
   }
 
-  // Subscribe form (fake send)
   const subscribeForm = document.getElementById('subscribe-form');
   const subscribeMessage = document.getElementById('subscribe-message');
 
@@ -335,9 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const dict = translations[currentLang] || {};
       const defaultText = 'Thank you for subscribing!';
-
-      subscribeMessage.textContent =
-        dict['footer.subscribe.success'] || defaultText;
+      subscribeMessage.textContent = dict['footer.subscribe.success'] || defaultText;
 
       subscribeForm.reset();
     });
